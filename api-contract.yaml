@@ -1,0 +1,41 @@
+openapi: 3.0.0
+info:
+  title: GET Endpoint Contract Definition Using YAML
+  description: Contract definition for adding two numbers via GET endpoint
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080
+    description: Local Server
+paths:
+  /msl/add:
+    get:
+      summary: Add two numbers
+      description: Adds two numbers passed as query parameters and returns the sum as a String.
+      operationId: addNumbers
+      parameters:
+        - name: a
+          in: query
+          required: true
+          description: First number to add
+          schema:
+            type: integer
+          example: 5
+        - name: b
+          in: query
+          required: true
+          description: Second number to add
+          schema:
+            type: integer
+          example: 10
+      responses:
+        '200':
+          description: OK - Returns the sum of the two numbers as a string
+          content:
+            text/plain; charset=UTF-8:
+              schema:
+                type: string
+                example: "15"
+            text/plain:
+              schema:
+                type: string
+                example: "15"
